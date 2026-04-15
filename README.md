@@ -13,7 +13,7 @@ This lab demonstrates how to configure Azure Private DNS for internal name resol
 ---
 # Architecture
 
-<img width="879" height="304" alt="image" src="https://github.com/user-attachments/assets/fd2e3a71-cc35-4aa0-8c84-dbfe30624d98" />
+<pre> ```mermaid flowchart LR subgraph RG["Resource Group"] subgraph VNet["Virtual Network: CoreServicesVNet"] VM1["TestVM1"] VM2["TestVM2"] end end DNS["Private DNS Zone: contoso.com"] VM1 -- "Query" --> DNS DNS -- "Response" --> VM1 VM2 -- "DNS Query" --> DNS DNS -- "Response" --> VM2 VNet ---|"VNet Link"| DNS ``` </pre>
 
 
 
