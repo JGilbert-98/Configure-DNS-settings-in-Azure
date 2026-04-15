@@ -19,7 +19,7 @@ This lab demonstrates how to configure Azure Private DNS for internal name resol
 
 # Implementation Steps
 
-1. Create Private DNS Zone
+# 1. Create Private DNS Zone
 Name: contoso.com
 Resource Group: ContosoResourceGroup
 
@@ -29,7 +29,7 @@ Resource Group: ContosoResourceGroup
 Figure 1: Contoso.com Private DNS Zone created
 
 ---
-2. Link Virtual Network
+# 2. Link Virtual Network
 VNet: CoreServicesVnet
 Auto-registration: Enabled
 
@@ -40,7 +40,7 @@ Figure 2: Virtual network linked to private DNS zone
 
 ---
 
-3. Deploy Virtual Machines
+# 3. Deploy Virtual Machines
 ```
 $RGName = "ContosoResourceGroup"
 
@@ -60,7 +60,7 @@ Figure 4: Virtual machine DNS records
 
 ---
 
-4. Verify DNS Resolution
+# 4. Verify DNS Resolution
 ```
 nslookup TestVM2.contoso.com
 ```
