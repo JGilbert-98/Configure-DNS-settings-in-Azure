@@ -21,9 +21,11 @@ This lab demonstrates how to configure Azure Private DNS for internal name resol
 1. Create Private DNS Zone
 Name: contoso.com
 Resource Group: ContosoResourceGroup
+---
 2. Link Virtual Network
 VNet: CoreServicesVnet
 Auto-registration: Enabled
+---
 3. Deploy Virtual Machines
 ```
 $RGName = "ContosoResourceGroup"
@@ -32,10 +34,15 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName $RGName `
   -TemplateFile azuredeploy.json `
   -TemplateParameterFile azuredeploy.parameters.json
+```
+---
 4. Verify DNS Resolution
+```
 nslookup TestVM2.contoso.com
 ```
-✔ Internal hostname successfully resolved
+Internal hostname successfully resolved
+<img width="447" height="197" alt="image" src="https://github.com/user-attachments/assets/9bb9a263-b3ab-4021-8778-8194edd961ec" />
+
 ---
 # Screenshots
 DNS Zone
@@ -52,11 +59,13 @@ VNet Link
 
 VM Records
 
+<img width="1757" height="383" alt="image" src="https://github.com/user-attachments/assets/28306428-7e47-4624-91f4-af07839e4d9c" />
 
 
 
 DNS Test
 
+<img width="1369" height="578" alt="image" src="https://github.com/user-attachments/assets/5cf83a4c-7bea-4304-aaff-92bd048b1b9c" />
 
 
 ---
@@ -70,9 +79,6 @@ DNS Test
 # Issues Encountered
 - ICMP (ping) blocked by default firewall rules
 - DNS resolution must be verified using nslookup instead
+- Azure VM sizes weren't available in US-East so I had to create a new resource group and put it in US-East2
 
 ---
-
-# Notes
-
-See notes.md for additional observations.
