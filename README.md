@@ -57,6 +57,7 @@ Figure 3: Virtual machines deployed
 
 
 Figure 4: Virtual machine DNS records
+
 ---
 
 4. Verify DNS Resolution
