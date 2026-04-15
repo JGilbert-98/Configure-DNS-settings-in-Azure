@@ -18,61 +18,62 @@ This lab demonstrates how to configure Azure Private DNS for internal name resol
 
 
 # Implementation Steps
+
 1. Create Private DNS Zone
 Name: contoso.com
 Resource Group: ContosoResourceGroup
----
-2. Link Virtual Network
-VNet: CoreServicesVnet
-Auto-registration: Enabled
----
-3. Deploy Virtual Machines
-```
-$RGName = "ContosoResourceGroup"
-
-New-AzResourceGroupDeployment `
-  -ResourceGroupName $RGName `
-  -TemplateFile azuredeploy.json `
-  -TemplateParameterFile azuredeploy.parameters.json
-```
----
-4. Verify DNS Resolution
-```
-nslookup TestVM2.contoso.com
-```
-Internal hostname successfully resolved
-<img width="447" height="197" alt="image" src="https://github.com/user-attachments/assets/9bb9a263-b3ab-4021-8778-8194edd961ec" />
-
----
-# Screenshots
-DNS Zone
 
 <img width="1363" height="473" alt="image" src="https://github.com/user-attachments/assets/5bd7e3a1-f892-4fd8-aaf0-b575dadd5539" />
 
 
+Figure 1: Contoso.com Private DNS Zone created
 
-VNet Link
+---
+2. Link Virtual Network
+VNet: CoreServicesVnet
+Auto-registration: Enabled
 
 <img width="1570" height="445" alt="image" src="https://github.com/user-attachments/assets/c012621f-af61-4b50-9e8d-791867cade61" />
 
 
+Figure 2: Virtual network linked to private DNS zone
 
-VM Records
+---
+
+3. Deploy Virtual Machines
+```
+$RGName = "ContosoResourceGroup"
+
+New-AzResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+
+```
 
 <img width="1757" height="383" alt="image" src="https://github.com/user-attachments/assets/28306428-7e47-4624-91f4-af07839e4d9c" />
 
 
-
-DNS Test
+Figure 3: Virtual machines deployed
 
 <img width="1369" height="578" alt="image" src="https://github.com/user-attachments/assets/5cf83a4c-7bea-4304-aaff-92bd048b1b9c" />
 
 
+Figure 4: Virtual machine DNS records
 ---
+
+4. Verify DNS Resolution
+```
+nslookup TestVM2.contoso.com
+```
+
+<img width="447" height="197" alt="image" src="https://github.com/user-attachments/assets/9bb9a263-b3ab-4021-8778-8194edd961ec" />
+
+
+Figure 5: Internal hostname successfully resolved
+
+---
+
 # Key Learnings
 - Private DNS Zones enable secure internal name resolution
 - Auto-registration simplifies DNS record management
-- nslookup is critical for troubleshooting DNS issues
 
 ---
 
